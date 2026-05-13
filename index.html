@@ -332,26 +332,30 @@ nav.scrolled .nav-cta:hover { background: var(--purple-light) !important; }
   border-radius: 2px;
 }
 
-/* PHILOSOPHY — PNW light section */
+/* PHILOSOPHY — dark PNW photo */
 .philosophy {
   padding: 9rem 6rem;
-  background: var(--cream);
   position: relative;
   overflow: hidden;
 }
 
-.philosophy::before {
-  content: '';
+.philosophy-bg {
   position: absolute;
-  top: 0; right: 0;
-  width: 45%;
-  height: 100%;
-  background-image: url('https://images.unsplash.com/photo-1501854140801-50d01698950b?w=900&q=80');
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1600&q=80');
   background-size: cover;
   background-position: center;
-  opacity: 0.07;
-  mask-image: linear-gradient(to left, rgba(0,0,0,0.6), transparent);
-  -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.6), transparent);
+}
+
+.philosophy-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 5, 25, 0.91) 0%,
+    rgba(40, 20, 80, 0.85) 50%,
+    rgba(10, 5, 25, 0.88) 100%
+  );
 }
 
 .philosophy-inner {
@@ -368,18 +372,21 @@ nav.scrolled .nav-cta:hover { background: var(--purple-light) !important; }
   font-size: clamp(2rem, 3.5vw, 2.8rem);
   font-weight: 400;
   line-height: 1.2;
-  color: var(--text);
+  color: var(--white);
   margin-bottom: 1.5rem;
 }
 
-.philosophy-text h2 em { font-style: italic; color: var(--purple); }
+.philosophy-text h2 em { font-style: italic; color: var(--gold-warm); }
 
 .philosophy-text p {
   font-size: 0.97rem;
-  color: var(--text-mid);
+  color: rgba(255,255,255,0.7);
   line-height: 1.9;
   margin-bottom: 1.25rem;
 }
+
+.philosophy .section-tag { color: var(--gold-warm); }
+.philosophy .section-tag::before { background: var(--gold-warm); }
 
 .framework-box {
   background: var(--purple);
@@ -548,10 +555,30 @@ nav.scrolled .nav-cta:hover { background: var(--purple-light) !important; }
   line-height: 1.75;
 }
 
-/* SUBJECTS */
+/* SUBJECTS — dark PNW photo */
 .subjects {
   padding: 9rem 6rem;
-  background: var(--cream-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.subjects-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=1600&q=80');
+  background-size: cover;
+  background-position: center 40%;
+}
+
+.subjects-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 8, 35, 0.90) 0%,
+    rgba(30, 15, 65, 0.87) 50%,
+    rgba(15, 8, 35, 0.90) 100%
+  );
 }
 
 .subjects-header {
@@ -560,45 +587,52 @@ nav.scrolled .nav-cta:hover { background: var(--purple-light) !important; }
   gap: 5rem;
   margin-bottom: 4rem;
   align-items: end;
+  position: relative;
+  z-index: 1;
 }
 
 .subjects-header h2 {
   font-family: var(--serif);
   font-size: clamp(2rem, 3.5vw, 2.8rem);
   font-weight: 400;
-  color: var(--text);
+  color: var(--white);
   line-height: 1.2;
 }
 
-.subjects-header h2 em { font-style: italic; color: var(--purple); }
-.subjects-header p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.85; }
+.subjects-header h2 em { font-style: italic; color: var(--gold-warm); }
+.subjects-header p { color: rgba(255,255,255,0.65); font-size: 0.95rem; line-height: 1.85; }
+
+.subjects .section-tag { color: var(--gold-warm); }
+.subjects .section-tag::before { background: var(--gold-warm); }
 
 .subjects-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem;
+  position: relative;
+  z-index: 1;
 }
 
 .subject-card {
-  background: var(--white);
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
   border-radius: 20px;
   padding: 2rem;
-  box-shadow: 0 2px 12px rgba(44,36,22,0.05);
-  border: 1px solid rgba(75,46,131,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
   transition: all 0.3s;
 }
 
 .subject-card:hover {
-  box-shadow: 0 8px 28px rgba(75,46,131,0.1);
+  background: rgba(255,255,255,0.13);
   transform: translateY(-3px);
-  border-color: rgba(75,46,131,0.14);
+  border-color: rgba(232,196,90,0.3);
 }
 
 .subject-math {
   font-family: var(--serif);
   font-size: 1.8rem;
-  color: var(--purple);
-  opacity: 0.4;
+  color: var(--gold-warm);
+  opacity: 0.7;
   margin-bottom: 1rem;
   line-height: 1;
 }
@@ -607,26 +641,27 @@ nav.scrolled .nav-cta:hover { background: var(--purple-light) !important; }
   font-family: var(--serif);
   font-size: 1.05rem;
   font-weight: 500;
-  color: var(--text);
+  color: var(--white);
   margin-bottom: 0.4rem;
 }
 
 .subject-card p {
   font-size: 0.83rem;
-  color: var(--text-muted);
+  color: rgba(255,255,255,0.6);
   line-height: 1.75;
   margin-bottom: 1rem;
 }
 
 .subject-pill {
   display: inline-block;
-  background: var(--purple-pale);
-  color: var(--purple);
+  background: rgba(232,196,90,0.15);
+  color: var(--gold-warm);
   font-size: 0.68rem;
   font-weight: 500;
   letter-spacing: 0.05em;
   padding: 0.28rem 0.75rem;
   border-radius: 100px;
+  border: 1px solid rgba(232,196,90,0.25);
 }
 
 /* ABOUT — misty PNW forest */
@@ -766,51 +801,76 @@ nav.scrolled .nav-cta:hover { background: var(--purple-light) !important; }
   border-top: 1px solid rgba(75,46,131,0.08);
 }
 
-/* TESTIMONIALS */
+/* TESTIMONIALS — dark PNW photo */
 .testimonials {
   padding: 9rem 6rem;
-  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonials-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1600&q=80');
+  background-size: cover;
+  background-position: center 30%;
+}
+
+.testimonials-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(10, 5, 25, 0.90) 0%,
+    rgba(50, 25, 90, 0.85) 50%,
+    rgba(10, 5, 25, 0.90) 100%
+  );
 }
 
 .testimonials-header {
   text-align: center;
   max-width: 520px;
   margin: 0 auto 4rem;
+  position: relative;
+  z-index: 1;
 }
 
-.testimonials-header .section-tag { justify-content: center; margin: 0 auto 0.75rem; }
+.testimonials-header .section-tag { justify-content: center; margin: 0 auto 0.75rem; color: var(--gold-warm); }
+.testimonials-header .section-tag::before { background: var(--gold-warm); }
 
 .testimonials-header h2 {
   font-family: var(--serif);
   font-size: clamp(2rem, 3.5vw, 2.8rem);
   font-weight: 400;
-  color: var(--text);
+  color: var(--white);
   line-height: 1.25;
 }
 
-.testimonials-header h2 em { font-style: italic; color: var(--purple); }
+.testimonials-header h2 em { font-style: italic; color: var(--gold-warm); }
 
 .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .testimonial {
-  background: var(--white);
+  background: rgba(255,255,255,0.07);
+  backdrop-filter: blur(12px);
   border-radius: 20px;
   padding: 2rem;
-  box-shadow: 0 2px 12px rgba(44,36,22,0.05);
-  border: 1px solid rgba(75,46,131,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
 }
 
-.stars { color: var(--gold); font-size: 0.8rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
+.stars { color: var(--gold-warm); font-size: 0.8rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
 
 .testimonial p {
   font-family: var(--serif);
   font-style: italic;
   font-size: 0.95rem;
-  color: var(--text-mid);
+  color: rgba(255,255,255,0.8);
   line-height: 1.75;
   margin-bottom: 1.5rem;
 }
@@ -820,18 +880,18 @@ nav.scrolled .nav-cta:hover { background: var(--purple-light) !important; }
 .author-avatar {
   width: 36px; height: 36px;
   border-radius: 50%;
-  background: var(--purple-pale);
+  background: rgba(255,255,255,0.15);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.72rem;
   font-weight: 500;
-  color: var(--purple);
+  color: var(--white);
   flex-shrink: 0;
 }
 
-.author-name { font-size: 0.88rem; font-weight: 500; color: var(--text); line-height: 1.2; }
-.author-detail { font-size: 0.75rem; color: var(--text-muted); }
+.author-name { font-size: 0.88rem; font-weight: 500; color: var(--white); line-height: 1.2; }
+.author-detail { font-size: 0.75rem; color: rgba(255,255,255,0.5); }
 
 /* RATES */
 .rates {
@@ -1161,6 +1221,8 @@ footer {
 
 <!-- PHILOSOPHY -->
 <section class="philosophy" id="philosophy">
+  <div class="philosophy-bg"></div>
+  <div class="philosophy-overlay"></div>
   <div class="philosophy-inner">
     <div class="philosophy-text">
       <div class="section-tag">Our Philosophy</div>
@@ -1234,6 +1296,8 @@ footer {
 
 <!-- SUBJECTS -->
 <section class="subjects" id="subjects">
+  <div class="subjects-bg"></div>
+  <div class="subjects-overlay"></div>
   <div class="subjects-header">
     <div>
       <div class="section-tag">Subjects</div>
@@ -1311,6 +1375,8 @@ footer {
 
 <!-- TESTIMONIALS -->
 <section class="testimonials">
+  <div class="testimonials-bg"></div>
+  <div class="testimonials-overlay"></div>
   <div class="testimonials-header">
     <div class="section-tag">Results</div>
     <h2>What <em>families</em> say</h2>
